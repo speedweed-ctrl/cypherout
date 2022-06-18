@@ -1,0 +1,18 @@
+#content {position:relative}
+#content:before, #content:after, #content>:first-child:before, #content>:first-child:after {
+    position:absolute; content:' ';
+    width:80px; height: 150px;
+    border-color:#3F1651; 
+    border-style:solid 200px ; 
+    border-radius: 6px;
+
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    
+}
+#content:before {top:0;left:0;border-width: 5px 0 0 5px}
+#content:after {top:0;right:0;border-width: 5px 5px 0 0}
+#content>:first-child:before {bottom:0;right:0;border-width: 0 5px 5px 0}
+#content>:first-child:after {bottom:0;left:0;border-width: 0 0 5px 5px}
