@@ -18,6 +18,21 @@ class OrderRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Order::class);
     }
+    public function findByExampleField($value)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+         $qb->select('b.Administration, COUNT(b.id) AS HIDDEN mycount')
+            ->from('\App\Entity\Order', 'b')
+            ->where('b.Administration IS NOT NULL')
+            ->orderBy('mycount', 'DESC')
+            ->groupBy('b.Administration');
+
+        $query = $qb->getQuery();
+        die($query->getSQL());
+        $result = $query->execute();
+        //die(print_r($result));
+        return $result;
+    }
 
     // /**
     //  * @return Order[] Returns an array of Order objects

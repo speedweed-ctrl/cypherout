@@ -88,9 +88,8 @@ class WorkerController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         $jsonContent = $normalizer->normalize($A,'json',['groups'=>'post:read']);
-
         return new Response(json_encode($jsonContent));
-
     }
+
 
 }

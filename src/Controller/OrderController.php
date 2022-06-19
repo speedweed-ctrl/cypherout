@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Administration;
+use App\Entity\Gichet;
 use App\Entity\Order;
 use App\Entity\Ticket;
 use App\Entity\Worker;
@@ -37,6 +38,18 @@ class OrderController extends AbstractController
         $em->persist($A);
         $em->flush();
         $jsonContent = $normalizer->normalize($A, 'json', ['groups' => 'read']);
+        return new Response(json_encode($jsonContent));
+    }
+    /**
+     * @Route("/getallordres", name="getallordres")
+     */
+    public function getallordres(Request $request,NormalizerInterface $normalizer):Response
+    {
+        $repository=$this->getDoctrine()->getRepository(Order::class);
+        $users=$repository->findAll();
+        //$User=$repository->findAll();
+        $jsonContent = $normalizer->normalize($users,'json',['groups'=>'post:read']);
+        //return $this->render('mobile/loginjson.html.twig',['data'=>$jsonContent]);
         return new Response(json_encode($jsonContent));
     }
 }
