@@ -15,26 +15,31 @@ class Order
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $Order_Description;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("post:read")
      */
     private $date;
 
     /**
      * @ORM\OneToOne(targetEntity=Ticket::class, cascade={"persist", "remove"})
+     * @Groups("post:read")
      */
     private $ticket;
 
     /**
      * @ORM\ManyToOne(targetEntity=Worker::class, inversedBy="orders")
+     * @Groups("post:read")
      */
     private $Worker;
 

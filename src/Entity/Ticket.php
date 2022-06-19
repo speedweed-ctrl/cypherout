@@ -14,18 +14,27 @@ class Ticket
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("post:read")
      */
     private $Day;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("post:read")
      */
     private $is_done;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Administration::class, inversedBy="tickets")
+     * @Groups("post:read")
+     */
+    private $Administration;
 
     public function getId(): ?int
     {
@@ -52,6 +61,18 @@ class Ticket
     public function setIsDone(bool $is_done): self
     {
         $this->is_done = $is_done;
+
+        return $this;
+    }
+
+    public function getAdministration(): ?Administration
+    {
+        return $this->Administration;
+    }
+
+    public function setAdministration(?Administration $Administration): self
+    {
+        $this->Administration = $Administration;
 
         return $this;
     }

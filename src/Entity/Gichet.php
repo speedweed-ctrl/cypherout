@@ -14,21 +14,25 @@ class Gichet
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $Code;
 
     /**
      * @ORM\OneToOne(targetEntity=Worker::class, cascade={"persist", "remove"})
+     * @Groups("post:read")
      */
     private $Worker;
 
     /**
      * @ORM\ManyToOne(targetEntity=Administration::class, inversedBy="gichets")
+     * @Groups("post:read")
      */
     private $Administration;
 

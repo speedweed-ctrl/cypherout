@@ -51,10 +51,16 @@ class Administration
      */
     private $gichets;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Ticket::class, mappedBy="Administration")
+     */
+    private $tickets;
+
     public function __construct()
     {
         $this->workers = new ArrayCollection();
         $this->gichets = new ArrayCollection();
+        $this->tickets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,6 +158,36 @@ class Administration
             // set the owning side to null (unless already changed)
             if ($gichet->getAdministration() === $this) {
                 $gichet->setAdministration(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ticket[]
+     */
+    public function getTickets(): Collection
+    {
+        return $this->tickets;
+    }
+
+    public function addTicket(Ticket $ticket): self
+    {
+        if (!$this->tickets->contains($ticket)) {
+            $this->tickets[] = $ticket;
+            $ticket->setAdministration($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTicket(Ticket $ticket): self
+    {
+        if ($this->tickets->removeElement($ticket)) {
+            // set the owning side to null (unless already changed)
+            if ($ticket->getAdministration() === $this) {
+                $ticket->setAdministration(null);
             }
         }
 

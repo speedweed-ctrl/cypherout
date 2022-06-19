@@ -16,31 +16,37 @@ class Worker
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("post:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $First_Name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $Last_Name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("post:read")
      */
     private $CIN;
 
     /**
      * @ORM\ManyToOne(targetEntity=Administration::class, inversedBy="workers")
+     * @Groups("post:read")
      */
     private $Administration;
 
     /**
      * @ORM\OneToMany(targetEntity=Order::class, mappedBy="Worker")
+     * @Groups("post:read")
      */
     private $orders;
 

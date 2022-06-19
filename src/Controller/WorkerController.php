@@ -3,50 +3,48 @@
 namespace App\Controller;
 
 use App\Entity\Administration;
+use App\Entity\Gichet;
+use App\Entity\Worker;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
-
-use Symfony\Component\Serializer\Serializer;
-
-
-
-class AdministrationController extends AbstractController
+class WorkerController extends AbstractController
 {
     /**
-     * @Route("/administration", name="administration")
+     * @Route("/worker", name="worker")
      */
     public function index(): Response
     {
-        return $this->render('administration/index.html.twig', [
-            'controller_name' => 'AdministrationController',
+        return $this->render('worker/index.html.twig', [
+            'controller_name' => 'WorkerController',
         ]);
     }
 
     /**
-     * @Route("/addAdministration",name="addAdministration")
+     * @Route("/AddWorker",name="AddWorker")
      */
-    public function addAdministration(Request $request,NormalizerInterface $normalizer)
+    public function AddWorker(Request $request, NormalizerInterface $normalizer)
     {
-        $A = new Administration();
-        $A->setName($request->get("Name"));
-        $A->setType($request->get("Type"));
-        $A->setMapCoordinates($request->get("Map"));
+        $A = new Worker();
+        $A->setCIN($request->get("Cin"));
+        $A->setFirstName($request->get("First_Name"));
+        $A->setLastName($request->get("Last_Name"));
+        $A->setAdministration($this->getDoctrine()->getRepository(Administration::class)->find($request->get("Administration")));
         $em = $this->getDoctrine()->getManager();
         $em->persist($A);
         $em->flush();
-        $jsonContent = $normalizer->normalize($A,'json',['groups'=>'read']);
+        $jsonContent = $normalizer->normalize($A, 'json', ['groups' => 'read']);
         return new Response(json_encode($jsonContent));
     }
     /**
-     * @Route("/getalladminstrationss", name="getalladminstrationss")
+     * @Route("/getallWorkers", name="getallWorkers")
      */
-    public function getalladminstrationss(Request $request,NormalizerInterface $normalizer):Response
+    public function getallWorkers(Request $request,NormalizerInterface $normalizer):Response
     {
-        $repository=$this->getDoctrine()->getRepository(Administration::class);
+        $repository=$this->getDoctrine()->getRepository(Worker::class);
         $users=$repository->findAll();
         //$User=$repository->findAll();
         $jsonContent = $normalizer->normalize($users,'json',['groups'=>'post:read']);
@@ -54,38 +52,39 @@ class AdministrationController extends AbstractController
         return new Response(json_encode($jsonContent));
     }
     /**
-     * @Route("/getAministration", name="getAministration")
+     * @Route("/getWorker", name="getWorker")
      */
-    public function getAministration(Request $request,NormalizerInterface $normalizer):Response
+    public function getWorker(Request $request,NormalizerInterface $normalizer):Response
     {
         $repository=$this->getDoctrine()->getManager();
         $id=$request->get("id");
-        $administration=$repository->getRepository(Administration::class)->find($id);
+        $administration=$repository->getRepository(Worker::class)->find($id);
         $jsonContent = $normalizer->normalize($administration,'json',['groups'=>'post:read']);
         return new Response(json_encode($jsonContent));
     }
     /**
-     * @Route("/deladminstration", name="deladminstration")
+     * @Route("/delWorker", name="delWorker")
      */
-    public function deladminstration(Request $request,NormalizerInterface $normalizer):Response
+    public function delWorker(Request $request,NormalizerInterface $normalizer):Response
     {
         $repository=$this->getDoctrine()->getManager();
         $id=$request->get("id");
-        $administration=$repository->getRepository(Administration::class)->find($id);
+        $administration=$repository->getRepository(Worker::class)->find($id);
         $repository->remove($administration);
         $repository->flush();
         $jsonContent = $normalizer->normalize($administration,'json',['groups'=>'post:read']);
         return new Response(json_encode("User deleted Successfully "));
     }
     /**
-     * @Route("/updateadminstration", name="updateadminstration")
+     * @Route("/updateWorker", name="updateWorker")
      */
-    public function updateadminstration(Request $request,NormalizerInterface $normalizer){
+    public function updateWorker(Request $request,NormalizerInterface $normalizer){
         $id=($request->get("id"));
-        $A= $this->getDoctrine()->getRepository(Administration::class)->find($id);
-        $A->setName($request->get("Name"));
-        $A->setType($request->get("Type"));
-        $A->setMapCoordinates($request->get("Map"));
+        $A= $this->getDoctrine()->getRepository(Worker::class)->find($id);
+        $A->setCIN($request->get("Cin"));
+        $A->setFirstName($request->get("First_Name"));
+        $A->setLastName($request->get("Last_Name"));
+        $A->setAdministration($this->getDoctrine()->getRepository(Administration::class)->find($request->get("Administration")));
         $em = $this->getDoctrine()->getManager();
         $em->flush();
         $jsonContent = $normalizer->normalize($A,'json',['groups'=>'post:read']);
