@@ -1,23 +1,14 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 
 const ReslutModal = ({props}) => {
-  const token=window.localStorage.getItem('token')
     const [active,setActive]=useState(true)
 
-    const config = {
-        headers: { Authorization: `Bearer ${token}`}
-    };
+    const redire=(e)=>{
+      e.preventDefault()
+      window.location.replace(props)
+    }
 
-  const updateDB=async(e)=>{
-    e.preventDefault()
-    const {data}=await axios.post('http://192.168.1.11:8000/api/add_scann',{
-      part:props[0]+props[1],
-      cin: parseInt(props[2]) ,
-      uid:props[3]
-    },config
-    )
-  }
+  
   
   
     if(active){
@@ -49,7 +40,7 @@ const ReslutModal = ({props}) => {
               cancel
             </button>
             <button type="button"
-            onClick={(e)=>updateDB(e)}
+              onClick={(e)=>redire(e)}
               class="inline-block px-6 py-2.5 bg-cl text-white font-Avalon text-xs leading-tight uppercase rounded shadow-md hover:bg-cl hover:shadow-lg focus:bg-cl focus:shadow-lg focus:outline-none focus:ring-0 active:bg-cl active:shadow-lg transition duration-150 ease-in-out ml-1">
               confirm 
             </button>
