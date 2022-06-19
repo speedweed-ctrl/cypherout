@@ -18,41 +18,36 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const products = [
   {
     id: uuid(),
-    name: 'Dropbox',
-    imageUrl: '/static/images/products/product_1.png',
+    name: 'walid jaounai',
+    imageUrl: '/static/images/products/a.png',
     updatedAt: subHours(Date.now(), 2)
   },
   {
     id: uuid(),
-    name: 'Medium Corporation',
-    imageUrl: '/static/images/products/product_2.png',
+    name: 'amir ben ammer',
+    imageUrl: '/static/images/products/a.png',
     updatedAt: subHours(Date.now(), 2)
   },
   {
     id: uuid(),
-    name: 'Slack',
-    imageUrl: '/static/images/products/product_3.png',
+    name: 'mortadha louhichi',
+    imageUrl: '/static/images/products/a.png',
     updatedAt: subHours(Date.now(), 3)
   },
   {
     id: uuid(),
-    name: 'Lyft',
-    imageUrl: '/static/images/products/product_4.png',
+    name: 'skander nafti',
+    imageUrl: '/static/images/products/a.png',
     updatedAt: subHours(Date.now(), 5)
   },
-  {
-    id: uuid(),
-    name: 'GitHub',
-    imageUrl: '/static/images/products/product_5.png',
-    updatedAt: subHours(Date.now(), 9)
-  }
+  
 ];
 
 export const LatestProducts = (props) => (
   <Card {...props}>
     <CardHeader
       subtitle={`${products.length} in total`}
-      title="Latest Products"
+      title="employess of the month"
     />
     <Divider />
     <List>

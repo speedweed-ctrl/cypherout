@@ -2,6 +2,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { Box, Card, CardContent, CardHeader, Divider, Typography, useTheme } from '@mui/material';
 import LaptopMacIcon from '@mui/icons-material/LaptopMac';
 import PhoneIcon from '@mui/icons-material/Phone';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import TabletIcon from '@mui/icons-material/Tablet';
 
 export const TrafficByDevice = (props) => {
@@ -17,7 +18,7 @@ export const TrafficByDevice = (props) => {
         hoverBorderColor: '#FFFFFF'
       }
     ],
-    labels: ['Desktop', 'Tablet', 'Mobile']
+    labels: ['post 1', 'post2 ', 'post 3']
   };
 
   const options = {
@@ -44,28 +45,28 @@ export const TrafficByDevice = (props) => {
 
   const devices = [
     {
-      title: 'Desktop',
+      title: 'post 1',
       value: 63,
-      icon: LaptopMacIcon,
+      icon: AssignmentIndIcon,
       color: '#3F51B5'
     },
     {
-      title: 'Tablet',
+      title: 'post 2',
       value: 15,
-      icon: TabletIcon,
+      icon: AssignmentIndIcon,
       color: '#E53935'
     },
     {
-      title: 'Mobile',
+      title: 'post 3',
       value: 23,
-      icon: PhoneIcon,
+      icon: AssignmentIndIcon,
       color: '#FB8C00'
     }
   ];
 
   return (
     <Card {...props}>
-      <CardHeader title="Traffic by Device" />
+      <CardHeader title="efficiency by post " />
       <Divider />
       <CardContent>
         <Box

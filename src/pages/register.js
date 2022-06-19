@@ -142,6 +142,18 @@ const Register = () => {
               variant="outlined"
             />
             <TextField
+              error={Boolean(formik.touched.lastName && formik.errors.lastName)}
+              fullWidth
+              helperText={formik.touched.lastName && formik.errors.lastName}
+              label="cin number"
+              margin="normal"
+              name="lastName"
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+              value={formik.values.lastName}
+              variant="outlined"
+            />
+            <TextField
               error={Boolean(formik.touched.password && formik.errors.password)}
               fullWidth
               helperText={formik.touched.password && formik.errors.password}

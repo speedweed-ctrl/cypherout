@@ -15,7 +15,7 @@ export const Sales = (props) => {
         borderRadius: 4,
         categoryPercentage: 0.5,
         data: [18, 5, 19, 27, 29, 19, 20],
-        label: 'This year',
+        label: 'current month',
         maxBarThickness: 10
       },
       {
@@ -25,11 +25,11 @@ export const Sales = (props) => {
         borderRadius: 4,
         categoryPercentage: 0.5,
         data: [11, 20, 12, 29, 30, 25, 13],
-        label: 'Last year',
+        label: 'Last month',
         maxBarThickness: 10
       }
     ],
-    labels: ['1 Aug', '2 Aug', '3 Aug', '4 Aug', '5 Aug', '6 Aug', '7 aug']
+    labels: ['1 ', '2 ', '3 ', '4 ', '5 ', '6 ', '7 ']
   };
 
   const options = {
@@ -89,7 +89,7 @@ export const Sales = (props) => {
             endIcon={<ArrowDropDownIcon fontSize="small" />}
             size="small"
           >
-            Last 7 days
+            Last month
           </Button>
         )}
         title="Latest Sales"

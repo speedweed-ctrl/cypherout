@@ -12,27 +12,27 @@ import {
 
 const states = [
   {
-    value: 'alabama',
-    label: 'Alabama'
+    value: 'tunis',
+    label: 'tunis'
   },
   {
-    value: 'new-york',
-    label: 'New York'
+    value: 'ariana',
+    label: 'ariana'
   },
   {
-    value: 'san-francisco',
-    label: 'San Francisco'
+    value: 'manouba',
+    label: 'manouba'
   }
 ];
 
 export const AccountProfileDetails = (props) => {
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
-    email: 'demo@devias.io',
+    firstName: '',
+    lastName: '',
+    email: '',
     phone: '',
-    state: 'Alabama',
-    country: 'USA'
+    state: '',
+    cin: ''
   });
 
   const handleChange = (event) => {
@@ -50,7 +50,7 @@ export const AccountProfileDetails = (props) => {
     >
       <Card>
         <CardHeader
-          subheader="The information can be edited"
+          subheader="edit personal info"
           title="Profile"
         />
         <Divider />
@@ -127,11 +127,11 @@ export const AccountProfileDetails = (props) => {
             >
               <TextField
                 fullWidth
-                label="Country"
-                name="country"
+                label="cin number"
+                name="cin"
                 onChange={handleChange}
                 required
-                value={values.country}
+                value={values.cin}
                 variant="outlined"
               />
             </Grid>

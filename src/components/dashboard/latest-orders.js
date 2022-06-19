@@ -23,17 +23,17 @@ const orders = [
     ref: 'CDD1049',
     amount: 30.5,
     customer: {
-      name: 'Ekaterina Tankova'
+      name: '1547869'
     },
     createdAt: 1555016400000,
-    status: 'pending'
+    status: 'canceled'
   },
   {
     id: uuid(),
     ref: 'CDD1048',
     amount: 25.1,
     customer: {
-      name: 'Cao Yu'
+      name: '1547869'
     },
     createdAt: 1555016400000,
     status: 'delivered'
@@ -43,27 +43,27 @@ const orders = [
     ref: 'CDD1047',
     amount: 10.99,
     customer: {
-      name: 'Alexa Richardson'
+      name: '1547869'
     },
     createdAt: 1554930000000,
-    status: 'refunded'
+    status: 'cancelled'
   },
   {
     id: uuid(),
     ref: 'CDD1046',
     amount: 96.43,
     customer: {
-      name: 'Anje Keizer'
+      name: '1547869'
     },
     createdAt: 1554757200000,
-    status: 'pending'
+    status: 'canceled'
   },
   {
     id: uuid(),
     ref: 'CDD1045',
     amount: 32.54,
     customer: {
-      name: 'Clarke Gillebert'
+      name: '1547869'
     },
     createdAt: 1554670800000,
     status: 'delivered'
@@ -73,7 +73,7 @@ const orders = [
     ref: 'CDD1044',
     amount: 16.76,
     customer: {
-      name: 'Adam Denisov'
+      name: '1547869'
     },
     createdAt: 1554670800000,
     status: 'delivered'
@@ -92,7 +92,7 @@ export const LatestOrders = (props) => (
                 Order Ref
               </TableCell>
               <TableCell>
-                Customer
+                employee ID
               </TableCell>
               <TableCell sortDirection="desc">
                 <Tooltip

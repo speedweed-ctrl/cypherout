@@ -10,11 +10,11 @@ import {
 } from '@mui/material';
 
 const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
+  avatar: '',
+  city: 'ariana',
+  country: 'tunis',
+  jobTitle: 'branch manager',
+  name: 'admin name',
   timezone: 'GTM-7'
 };
 
